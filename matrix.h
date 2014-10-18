@@ -2,12 +2,13 @@
 #define MATRIX_H
 #include<fstream>
 #include<iostream>
+#include<vector>
 using namespace std;
 
 class matrix
 {
 
-        private:
+        protected:
         int rows;
         int cols;
 
@@ -18,6 +19,7 @@ class matrix
 
     matrix();
     matrix(int rows, int cols);
+   // ~matrix();
 
     int getRows();
     void setRows(int value);
@@ -46,6 +48,22 @@ class matrix
 
 
 
+
+};
+
+
+class imagen : public matrix
+{
+protected:
+
+    char p;
+    int nmagic;
+    int mval;
+
+public:
+
+    void relli(string c);
+//    void imprimir(string c);
 
 };
 

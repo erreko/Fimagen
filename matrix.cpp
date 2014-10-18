@@ -53,6 +53,16 @@ matrix::matrix(int rows, int cols)
        }
 }
 
+/*matrix::~matrix()
+{
+    for(int i = 0; i<rows; i++)
+    {
+        delete[] m[i];
+    }
+    delete[] m;
+}
+*/
+
 void matrix::showMatrix()
 {
     for(int i=0;i<rows;i++)
@@ -266,12 +276,12 @@ void matrix::imprimir(string c)
     file.open(c.c_str());
     if(file.is_open())
     {
-        file << this->rows << " "<< this->cols<<endl;
+        file << this->cols << " "<< this->rows<<endl;
 
 
-              for(i = 0;i<this->rows;i++)
+              for(i = 0;i<this->cols;i++)
               {
-                  for(j = 0;j<this->cols;j++)
+                  for(j = 0;j<this->rows;j++)
                   {
                       file << this->m[i][j] << " ";
 
@@ -282,5 +292,41 @@ void matrix::imprimir(string c)
 
       file.close();
     }
+
+}
+
+void imagen::relli(string c)
+{
+
+    ifstream file;
+    file.open(c.c_str());
+    if(file.is_open())
+    {
+        file >> this->p;
+        file >> this->nmagic;
+        file >> this->cols;
+        file >> this->rows;
+        file >> this->mval;
+
+              this->m = new int* [cols];
+
+              for(int i=0;i<this->cols;i++)
+              {
+                  this->m[i]= new int [rows];
+              }
+
+              for(int i = 0;i<this->cols;i++)
+              {
+                  for(int j = 0;j<this->rows;j++)
+                  {
+                      file >> this->m[i][j];
+
+                  }
+              }
+
+     file.close();
+
+    }
+
 
 }

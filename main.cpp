@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    matrix a;
+    imagen a;
 
 
 
@@ -35,13 +35,11 @@ int main()
     c = a * b;
 */
 
-    a.rellenar2("123.txt");
+    a.relli("pet.pgm");
 
-    cout<<a<<endl;
+    a.imprimir("imprimiendoPET.txt");
 
-
-    a.imprimir("txt2.txt");
-
+  //  a.showMatrix();
 
     return 0;
 }
