@@ -2,36 +2,45 @@
 #include<iostream>
 #include<fstream>
 
-
 using namespace std;
 
-int matrix::getRows()
+int Matrix::getRows()
 {
     return this->rows;
 }
 
-void matrix::setRows(int value)
+void Matrix::setRows(int value)
 {
    this->rows = value;
 }
 
-int matrix::getCols()
+int Matrix::getCols()
 {
     return this->cols;
 }
 
-void matrix::setCols(int value)
+void Matrix::setCols(int value)
 {
    this->cols = value;
 }
-matrix::matrix()
+
+int **Matrix::getM() const
 {
-  m = NULL;
-  rows =0;
-  cols =0;
+    return m;
 }
 
-matrix::matrix(int rows, int cols)
+void Matrix::setM(int **value)
+{
+    m = value;
+}
+Matrix::Matrix()
+{
+    m = NULL;
+    rows =0;
+    cols =0;
+}
+
+Matrix::Matrix(int rows, int cols)
 {
     this->rows = rows;
     this->cols = cols;
@@ -47,13 +56,13 @@ matrix::matrix(int rows, int cols)
        {
         for (int j=0; j <cols ; j++)
             {
-                 m[i][j] = 0;
+                 m[i][j] = 2;
 
             }
        }
 }
 
-/*matrix::~matrix()
+Matrix::~Matrix()
 {
     for(int i = 0; i<rows; i++)
     {
@@ -61,9 +70,9 @@ matrix::matrix(int rows, int cols)
     }
     delete[] m;
 }
-*/
 
-void matrix::showMatrix()
+
+void Matrix::showMatrix()
 {
     for(int i=0;i<rows;i++)
     {
@@ -76,7 +85,7 @@ void matrix::showMatrix()
 
 }
 
-void matrix::suma(matrix a, matrix b)
+void Matrix::suma(Matrix a, Matrix b)
 {
 
     for(int i =0;i<rows; i++)
@@ -88,7 +97,7 @@ void matrix::suma(matrix a, matrix b)
     }
 }
 
-void matrix::resta(matrix a, matrix b)
+void Matrix::resta(Matrix a, Matrix b)
 {
     for(int i =0;i<rows; i++)
     {
@@ -99,7 +108,7 @@ void matrix::resta(matrix a, matrix b)
     }
 }
 
-void matrix::escalar(int a)
+void Matrix::escalar(int a)
 {
     for(int i =0;i<rows; i++)
     {
@@ -110,7 +119,7 @@ void matrix::escalar(int a)
     }
 }
 
-void matrix::transpuesta(matrix a)
+void Matrix::transpuesta(Matrix a)
 {
     for(int i =0;i<cols; i++)
     {
@@ -122,7 +131,7 @@ void matrix::transpuesta(matrix a)
 
 }
 
-void matrix::mul(matrix a, matrix b)
+void Matrix::mul(Matrix a, Matrix b)
 {
     int **d;
     d = new int*[rows];
@@ -143,7 +152,7 @@ void matrix::mul(matrix a, matrix b)
     }
 }
 
-void matrix::rellenar()
+void Matrix::rellenar()
 {
     int z =1;
     for(int i =0;i<rows; i++)
@@ -158,7 +167,7 @@ void matrix::rellenar()
 
 }
 
-void matrix::showMatrixT()
+void Matrix::showMatrixT()
 {
     for(int i=0;i<rows;i++)
     {
@@ -171,10 +180,14 @@ void matrix::showMatrixT()
 
 }
 
-
-matrix &matrix::operator +(const matrix &valor)
+/*matrix &matrix::suma(const matrix &a, const matrix &b)
+{
+    return a+b;
+}
+*/
+Matrix &Matrix::operator +(const Matrix &valor)
  {
-    matrix *c = new matrix(valor.rows, valor.cols);
+    Matrix *c = new Matrix(valor.rows, valor.cols);
 
         for(int i = 0; i<c->rows; i++)
         {
@@ -187,9 +200,9 @@ matrix &matrix::operator +(const matrix &valor)
         return *c;
  }
 
-matrix &matrix::operator -(const matrix &valor)
+Matrix &Matrix::operator -(const Matrix &valor)
  {
-    matrix *c = new matrix(valor.rows, valor.cols);
+    Matrix *c = new Matrix(valor.rows, valor.cols);
 
         for(int i = 0; i<c->rows; i++)
         {
@@ -202,9 +215,9 @@ matrix &matrix::operator -(const matrix &valor)
         return *c;
  }
 
-matrix &matrix:: operator *(const matrix &valor)
+Matrix &Matrix:: operator *(const Matrix &valor)
 {
-    matrix *c = new matrix(valor.rows, valor.cols);
+    Matrix *c = new Matrix(valor.rows, valor.cols);
 
         for (int i = 0; i < this->rows; i++)
         {
@@ -221,7 +234,7 @@ matrix &matrix:: operator *(const matrix &valor)
 }
 
 
-ostream& operator <<(ostream &os, const matrix &valor)
+ostream& operator <<(ostream &os, const Matrix &valor)
 {
     for(int i = 0; i<valor.rows; i++)
     {
@@ -234,7 +247,12 @@ ostream& operator <<(ostream &os, const matrix &valor)
     return os;
 }
 
-void matrix::rellenar2(string c)
+int Matrix::coo(int i, int j)
+{
+ return this->m[i][j];
+}
+
+void Matrix::rellenar2(string c)
 {
     int i = 0;
     int j = 0;
@@ -268,7 +286,7 @@ void matrix::rellenar2(string c)
 }
 
 
-void matrix::imprimir(string c)
+void Matrix::imprimir(string c)
 {
     int i = 0;
     int j = 0;
@@ -276,12 +294,12 @@ void matrix::imprimir(string c)
     file.open(c.c_str());
     if(file.is_open())
     {
-        file << this->cols << " "<< this->rows<<endl;
+        file << this->rows << " "<< this->cols<<endl;
 
 
-              for(i = 0;i<this->cols;i++)
+              for(i = 0;i<this->rows;i++)
               {
-                  for(j = 0;j<this->rows;j++)
+                  for(j = 0;j<this->cols;j++)
                   {
                       file << this->m[i][j] << " ";
 
@@ -295,38 +313,4 @@ void matrix::imprimir(string c)
 
 }
 
-void imagen::relli(string c)
-{
 
-    ifstream file;
-    file.open(c.c_str());
-    if(file.is_open())
-    {
-        file >> this->p;
-        file >> this->nmagic;
-        file >> this->cols;
-        file >> this->rows;
-        file >> this->mval;
-
-              this->m = new int* [cols];
-
-              for(int i=0;i<this->cols;i++)
-              {
-                  this->m[i]= new int [rows];
-              }
-
-              for(int i = 0;i<this->cols;i++)
-              {
-                  for(int j = 0;j<this->rows;j++)
-                  {
-                      file >> this->m[i][j];
-
-                  }
-              }
-
-     file.close();
-
-    }
-
-
-}

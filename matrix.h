@@ -5,7 +5,7 @@
 #include<vector>
 using namespace std;
 
-class matrix
+class Matrix
 {
 
         protected:
@@ -17,9 +17,9 @@ class matrix
         public:
 
 
-    matrix();
-    matrix(int rows, int cols);
-   // ~matrix();
+    Matrix();
+    Matrix(int rows, int cols);
+    ~Matrix();
 
     int getRows();
     void setRows(int value);
@@ -27,46 +27,33 @@ class matrix
     void setCols(int value);
 
     void showMatrix();
-    void suma(matrix a, matrix b);
-    void resta(matrix a, matrix b);
+    void suma(Matrix a, Matrix b);
+    void resta(Matrix a, Matrix b);
     void escalar(int a);
-    void transpuesta(matrix a);
-    void mul(matrix a, matrix b);
+    void transpuesta(Matrix a);
+    void mul(Matrix a, Matrix b);
     void rell();
     void rellenar();
     void showMatrixT();
 
-    matrix& operator +(const matrix &valor);
-    matrix& operator -(const matrix &valor);
-    matrix& operator *(const matrix &valor);
+    Matrix& operator +(const Matrix &valor);
+    Matrix& operator -(const Matrix &valor);
+    Matrix& operator *(const Matrix &valor);
 
 
-    friend ostream& operator <<(ostream &os, const matrix &valor);
+    friend ostream& operator <<(ostream &os, const Matrix &valor);
 
     void rellenar2(string c);
     void imprimir(string c);
+    int coo(int i,int j);
+
+    static Matrix &suma(const Matrix &a, const Matrix &b, const Matrix &c);
 
 
 
-
+    int **getM() const;
+    void setM(int **value);
 };
-
-
-class imagen : public matrix
-{
-protected:
-
-    char p;
-    int nmagic;
-    int mval;
-
-public:
-
-    void relli(string c);
-//    void imprimir(string c);
-
-};
-
 
 
 #endif // MATRIX_H

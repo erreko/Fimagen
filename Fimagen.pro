@@ -11,3 +11,4 @@ HEADERS += \
     matrix.h \
     imagen.h
 
+LIBS += -lfreeglut -lopengl32 -lglu32
