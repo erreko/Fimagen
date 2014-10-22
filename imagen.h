@@ -14,6 +14,8 @@ public:
     void relli(string c);
     void pintar();
     void imprimiri(string c);
+    void negativo();
+    void thold();
 };
 
 #endif // IMAGEN_H

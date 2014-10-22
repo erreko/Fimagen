@@ -61,7 +61,7 @@ Matrix::Matrix(int rows, int cols)
             }
        }
 }
-
+/*
 Matrix::~Matrix()
 {
     for(int i = 0; i<rows; i++)
@@ -70,7 +70,7 @@ Matrix::~Matrix()
     }
     delete[] m;
 }
-
+*/
 
 void Matrix::showMatrix()
 {

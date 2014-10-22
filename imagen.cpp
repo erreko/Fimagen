@@ -55,26 +55,6 @@ void Imagen::relli(string c)
 
 }
 
-void Imagen::pintar()
-{
-    int i,j;
-   double r;
-   for(j=0;j<rows;j++)
-   {
-       for(i=0;i<cols;i++)
-           {
-
-               r= (m[i][j])/255.0;
-
-               glColor3f(r,r,r);
-               glVertex2s(i,j);
-
-            }
-
-   }
-}
-
-
 void Imagen::imprimiri(string c)
 {
     int i = 0;
@@ -103,3 +83,63 @@ void Imagen::imprimiri(string c)
     }
 
 }
+
+
+void Imagen::pintar()
+{
+    int i,j;
+   double r;
+   for(j=0;j<rows;j++)
+   {
+       for(i=0;i<cols;i++)
+           {
+
+               r= (m[i][j])/255.0;
+
+               glColor3f(r,r,r);
+               glVertex2s(i,j);
+
+            }
+
+   }
+}
+
+void Imagen::negativo()
+{
+   double r,t;
+
+   for(int j=0;j<rows;j++)
+   {
+       for(int i=0;i<cols;i++)
+       {
+           t = 255.0 - m[i][j];
+           r = t/255.0;
+
+           glColor3f(r,r,r);
+           glVertex2s(i,j);
+       }
+   }
+
+
+
+}
+
+void Imagen::thold()
+{
+
+    for(int j=0;j<rows;j++)
+        {
+            for(int i=0;i<cols;i++)
+            {
+                m[i][j] = m[i][j]>=127?255:0;
+
+                glColor3f(m[i][j],m[i][j],m[i][j]);
+                glVertex2s(i,j);
+
+            }
+
+        }
+
+}
+
+
