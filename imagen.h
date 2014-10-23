@@ -15,7 +15,9 @@ public:
     void pintar();
     void imprimiri(string c);
     void negativo();
-    void thold();
+    void thold(int a);
+    void copia(Imagen a);
+    void original();
 };
 
 #endif // IMAGEN_H

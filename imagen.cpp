@@ -106,17 +106,14 @@ void Imagen::pintar()
 
 void Imagen::negativo()
 {
-   double r,t;
+   double t;
 
    for(int j=0;j<rows;j++)
    {
        for(int i=0;i<cols;i++)
        {
            t = 255.0 - m[i][j];
-           r = t/255.0;
-
-           glColor3f(r,r,r);
-           glVertex2s(i,j);
+           m[i][j] = t;
        }
    }
 
@@ -124,17 +121,14 @@ void Imagen::negativo()
 
 }
 
-void Imagen::thold()
+void Imagen::thold(int a)
 {
 
     for(int j=0;j<rows;j++)
         {
             for(int i=0;i<cols;i++)
             {
-                m[i][j] = m[i][j]>=127?255:0;
-
-                glColor3f(m[i][j],m[i][j],m[i][j]);
-                glVertex2s(i,j);
+                m[i][j] = m[i][j]>=a?255:0;
 
             }
 
@@ -142,4 +136,44 @@ void Imagen::thold()
 
 }
 
+void Imagen::copia(Imagen a)
+{
+    this->rows = a.rows;
+    this->cols = a.cols;
+    this->p[0] = a.p[0];
+    this->p[1] = a.p[1];
+    this->mval = a.mval;
 
+    this->m = new int* [cols];
+
+    for(int i=0;i<this->cols;i++)
+    {
+        this->m[i]= new int [rows];
+    }
+
+    for(int i = 0;i<this->rows;i++)
+    {
+        for(int j = 0;j<this->cols;j++)
+        {
+           this->m[j][i] = a.m[j][i];
+
+        }
+    }
+
+
+}
+
+void Imagen::original()
+{
+    int i,j;
+   double r;
+   for(j=0;j<rows;j++)
+   {
+       for(i=0;i<cols;i++)
+           {
+               r= (m[i][j]);
+           }
+
+   }
+
+}
