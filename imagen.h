@@ -16,8 +16,10 @@ public:
     void imprimiri(string c);
     void negativo();
     void thold(int a);
-    void copia(Imagen a);
+    void copia(const Imagen &a);
     void original();
+    void oscurecer();
+    void iluminar();
 };
 
 #endif // IMAGEN_H

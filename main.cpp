@@ -17,7 +17,7 @@
 
 using namespace std;
 
-void display();
+void display(void);
 void keyboard(unsigned char key, int x, int y);
 
 
@@ -36,14 +36,9 @@ int main(int argc, char** argv)
     glutInitWindowPosition(150,150);
     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
     glutCreateWindow("LOL");
-    glMatrixMode(GL_PROJECTION);
-    glClearColor(0.0f,0.0f,0.0f,0.0f);
     gluOrtho2D(0,640,480,0);
-
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
-
-
     glutMainLoop();
 
      return EXIT_SUCCESS;
@@ -54,15 +49,20 @@ int main(int argc, char** argv)
 }
 
 
-void display()
+void display(void)
 {
-          glClear(GL_COLOR_BUFFER_BIT);
-          glBegin(GL_POINTS);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glBegin(GL_POINTS);
+
 
           b.pintar();
 
-          glEnd();
-          glFlush();
+    glEnd();
+    glFlush();
+    glutPostRedisplay();
+
+
 }
 
 
@@ -84,6 +84,14 @@ void keyboard(unsigned char key, int x, int y)
     case 'n':
         b.copia(a);
         b.negativo();
+        break;
+
+    case 'u':
+        b.oscurecer();
+        break;
+
+    case 'i':
+        b.iluminar();
         break;
 
     case 'g':

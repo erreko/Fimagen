@@ -87,7 +87,9 @@ void Imagen::imprimiri(string c)
 
 void Imagen::pintar()
 {
-    int i,j;
+
+
+   int i,j;
    double r;
    for(j=0;j<rows;j++)
    {
@@ -102,11 +104,13 @@ void Imagen::pintar()
             }
 
    }
+
 }
 
 void Imagen::negativo()
 {
    double t;
+
 
    for(int j=0;j<rows;j++)
    {
@@ -136,7 +140,7 @@ void Imagen::thold(int a)
 
 }
 
-void Imagen::copia(Imagen a)
+void Imagen::copia(const Imagen &a)
 {
     this->rows = a.rows;
     this->cols = a.cols;
@@ -173,7 +177,33 @@ void Imagen::original()
            {
                r= (m[i][j]);
            }
-
    }
+}
+
+void Imagen::oscurecer()
+{
+    for(int j=0;j<rows;j++)
+        {
+            for(int i=0;i<cols;i++)
+            {
+                m[i][j] = m[i][j]-1;
+
+            }
+
+        }
+
+}
+
+void Imagen::iluminar()
+{
+    for(int j=0;j<rows;j++)
+        {
+            for(int i=0;i<cols;i++)
+            {
+                m[i][j] = m[i][j]+1;
+
+            }
+
+        }
 
 }
