@@ -11,6 +11,7 @@ protected:
 
 public:
     Imagen();
+    ~Imagen();
     void relli(string c);
     void pintar();
     void imprimiri(string c);

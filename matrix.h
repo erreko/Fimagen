@@ -19,7 +19,7 @@ class Matrix
 
     Matrix();
     Matrix(int rows, int cols);
- //   ~Matrix();
+//    ~Matrix();
 
     int getRows();
     void setRows(int value);

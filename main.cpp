@@ -27,7 +27,7 @@ Imagen a,b;
 
 int main(int argc, char** argv)
 {
-    a.relli("venecia.pgm");
+    a.relli("window.pgm");
     b.copia(a);
     a.imprimiri("intento.pgm");
 
