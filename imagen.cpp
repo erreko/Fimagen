@@ -18,6 +18,7 @@ Imagen::Imagen()
 
 }
 
+/*
 Imagen::~Imagen()
 {
 for(int i = 0; i<rows; i++)
@@ -26,7 +27,7 @@ for(int i = 0; i<rows; i++)
   }
   delete[] m;
 }
-
+*/
 void Imagen::relli(string c)
 {
 
@@ -216,5 +217,34 @@ void Imagen::iluminar()
 
 }
 
+/*Imagen Imagen::operator!()
+{
 
+    int i = 0;
+    int j = 0;
 
+    Imagen z;
+
+    z.rows = this->rows;
+    z.cols = this->cols;
+
+    z.m = new int* [z.rows];
+
+    for(i=0;i<z.rows;i++)
+    {
+        z.m[i] = new int [z.cols];
+    }
+
+    for(i=0;i<z.rows;i++)
+    {
+        for(j=0;j<z.cols;j++)
+        {
+          z.m[j][i] = 255-this->m[j][i];
+
+        }
+    }
+
+    return z;
+}
+
+*/

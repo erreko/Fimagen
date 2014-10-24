@@ -22,7 +22,7 @@ public:
     void oscurecer();
     void iluminar();
 
-    Imagen operator!();
+//    Imagen operator!();
 };
 
 #endif // IMAGEN_H

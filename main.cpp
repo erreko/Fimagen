@@ -27,7 +27,25 @@ Imagen a,b;
 
 int main(int argc, char** argv)
 {
-    a.relli("window.pgm");
+    cout << "Elija la imagen que desea cargar"<< endl;
+    cout << "v: venecia" << endl;
+    cout << "w: window " << endl;
+    cout << "p: pet" << endl;
+    char c;
+    cin >> c;
+    switch(c)
+    {
+
+    case 'w':
+        a.relli("window.pgm");
+        break;
+    case 'p':
+        a.relli("pet.pgm");
+        break;
+    case 'v':
+        a.relli("venecia.pgm");
+        break;
+    }
     b.copia(a);
     a.imprimiri("intento.pgm");
 
@@ -35,7 +53,7 @@ int main(int argc, char** argv)
     glutInitWindowSize(640,480);
     glutInitWindowPosition(150,150);
     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-    glutCreateWindow("LOL");
+    glutCreateWindow("Imagen.pgm");
     gluOrtho2D(0,640,480,0);
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
