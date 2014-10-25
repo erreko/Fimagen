@@ -40,14 +40,14 @@ int main(int argc, char** argv)
         a.relli("window.pgm");
         break;
     case 'p':
-        a.relli("pet.pgm");
+        a.relli("Isalvada.pgm");
         break;
     case 'v':
         a.relli("venecia.pgm");
         break;
     }
     b.copia(a);
-    a.imprimiri("intento.pgm");
+ //   a.imprimiri("intento.pgm");
 
     glutInit(&argc, argv);
     glutInitWindowSize(640,480);

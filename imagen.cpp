@@ -41,18 +41,18 @@ void Imagen::relli(string c)
         file >> this->rows;
         file >> this->mval;
 
-              this->m = new int* [cols];
+              this->m = new int* [rows];
 
-              for(int i=0;i<this->cols;i++)
+              for(int i=0;i<this->rows;i++)
               {
-                  this->m[i]= new int [rows];
+                  this->m[i]= new int [cols];
               }
 
               for(int i = 0;i<this->rows;i++)
               {
                   for(int j = 0;j<this->cols;j++)
                   {
-                      file >> this->m[j][i];
+                      file >> this->m[i][j];
 
                   }
               }
@@ -72,11 +72,11 @@ void Imagen::imprimiri(string c)
     file.open(c.c_str());
     if(file.is_open())
     {
-        file <<p[0]<<p[1]<<" ";
+        file <<p[0]<<p[1]<<p[2]<<endl;
 
-        file << this->rows << " "<< this->cols<<endl;
+        file << this->cols << " "<< this->rows<<endl;
 
-        file <<mval<<" ";
+        file <<mval<<endl;
               for(i = 0;i<this->rows;i++)
               {
                   for(j = 0;j<this->cols;j++)
@@ -105,7 +105,7 @@ void Imagen::pintar()
        for(i=0;i<cols;i++)
            {
 
-               r= (m[i][j])/255.0;
+               r= (m[j][i])/255.0;
 
                glColor3f(r,r,r);
                glVertex2s(i,j);
@@ -125,8 +125,8 @@ void Imagen::negativo()
    {
        for(int i=0;i<cols;i++)
        {
-           t = 255.0 - m[i][j];
-           m[i][j] = t;
+           t = 255.0 - m[j][i];
+           m[j][i] = t;
        }
    }
 
@@ -141,7 +141,7 @@ void Imagen::thold(int a)
         {
             for(int i=0;i<cols;i++)
             {
-                m[i][j] = m[i][j]>=a?255:0;
+                m[j][i] = m[j][i]>=a?255:0;
 
             }
 
@@ -155,21 +155,21 @@ void Imagen::copia(const Imagen &a)
     this->cols = a.cols;
     this->p[0] = a.p[0];
     this->p[1] = a.p[1];
+    this->p[2] = a.p[2];
     this->mval = a.mval;
 
-    this->m = new int* [cols];
+    this->m = new int* [rows];
 
-    for(int i=0;i<this->cols;i++)
+    for(int i=0;i<this->rows;i++)
     {
-        this->m[i]= new int [rows];
+        this->m[i]= new int [cols];
     }
 
     for(int i = 0;i<this->rows;i++)
     {
         for(int j = 0;j<this->cols;j++)
         {
-           this->m[j][i] = a.m[j][i];
-
+           this->m[i][j] = a.m[i][j];
         }
     }
 
@@ -184,7 +184,7 @@ void Imagen::original()
    {
        for(i=0;i<cols;i++)
            {
-               r= (m[i][j]);
+               r= (m[j][i]);
            }
    }
 }
@@ -195,7 +195,7 @@ void Imagen::oscurecer()
         {
             for(int i=0;i<cols;i++)
             {
-                m[i][j] = m[i][j]-1;
+                m[j][i] = m[j][i]-1;
 
             }
 
@@ -209,7 +209,7 @@ void Imagen::iluminar()
         {
             for(int i=0;i<cols;i++)
             {
-                m[i][j] = m[i][j]+1;
+                m[j][i] = m[j][i]+1;
 
             }
 

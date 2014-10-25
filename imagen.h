@@ -6,7 +6,7 @@ class Imagen : public Matrix
 {
 protected:
 
-    char p[1];
+    char p[2];
     int mval;
 
 public:
