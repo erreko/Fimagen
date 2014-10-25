@@ -23,8 +23,6 @@ void keyboard(unsigned char key, int x, int y);
 
 Imagen a,b;
 
-
-
 int main(int argc, char** argv)
 {
     cout << "Elija la imagen que desea cargar"<< endl;
@@ -40,7 +38,7 @@ int main(int argc, char** argv)
         a.relli("window.pgm");
         break;
     case 'p':
-        a.relli("Isalvada.pgm");
+        a.relli("pet.pgm");
         break;
     case 'v':
         a.relli("venecia.pgm");
@@ -115,6 +113,12 @@ void keyboard(unsigned char key, int x, int y)
     case 'g':
         b.imprimiri("Isalvada.pgm");
         break;
+
+    case 'c':
+        b.relli("Isalvada.pgm");
+        break;
+
+
     }
 }
 

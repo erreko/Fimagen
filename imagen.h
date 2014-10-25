@@ -23,6 +23,7 @@ public:
     void iluminar();
 
     Imagen operator!();
+
 };
 
 #endif // IMAGEN_H
